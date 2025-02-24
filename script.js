@@ -1,6 +1,13 @@
 const apiKey = "d0187871451aac927c104f79db31f3f5";
 const apiURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
+
+// const input = document.getElementById("search-bar");
+// const button = document.getElementById("search-button");
+
+
+
+
 const searchBox = document.querySelector(".search-bar");
 const searchBtn = document.querySelector(".search-button");
 const weatherIcon = document.querySelector(".weather-icon");
@@ -13,7 +20,7 @@ async function checkWeather(city) {
         document.querySelector(".weather-box").style.display = "none";
     }
     else {
-        
+
         var data = await respone.json();
 
         console.log(data);
@@ -46,6 +53,14 @@ async function checkWeather(city) {
         document.querySelector(".weather-box").style.display = "block";
     }
 }
+
+searchBox.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+
+        searchBtn.click(); 
+    }
+
+});
 
 searchBtn.addEventListener("click", () => {
     checkWeather(searchBox.value);
